@@ -55,7 +55,8 @@ class PkgInfoReader(Copier):
             "return the highest version found if multiple packages are found.",
         },
         "minimum_os_version": {"description": "The minimum OS version if supplied."},
-        "installed_item_size": {"description": "The size of the downloaded package."},
+        "installer_item_size": {"description": "The size of the package (in bytes)."},
+        "installed_size": {"description": "The size of the app when installed (in bytes)."}
     }
 
     description = __doc__
@@ -533,6 +534,9 @@ class PkgInfoReader(Copier):
             if key in installerinfo:
                 cataloginfo[key] = installerinfo[key]
 
+        installer_item_size = os.path.getsize(pkgitem)
+        cataloginfo["installer_item_size"] = installer_item_size
+
         if "installed_size" in installerinfo:
             if installerinfo["installed_size"] > 0:
                 cataloginfo["installed_size"] = installerinfo["installed_size"]
@@ -580,7 +584,6 @@ class PkgInfoReader(Copier):
             self.env["infodict"] = cataloginfo
             self.env["version"] = cataloginfo["version"]
             self.env["minimum_os_version"] = cataloginfo["minimum_os_version"]
-            self.env["installed_item_size"] = cataloginfo["installed_item_size"]
 
         finally:
             if dmg:
