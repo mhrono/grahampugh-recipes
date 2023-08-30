@@ -584,6 +584,8 @@ class PkgInfoReader(Copier):
             self.env["infodict"] = cataloginfo
             self.env["version"] = cataloginfo["version"]
             self.env["minimum_os_version"] = cataloginfo["minimum_os_version"]
+            self.env["installer_item_size"] = cataloginfo["installer_item_size"]
+            self.env["installed_size"] = cataloginfo["installed_size"]
 
         finally:
             if dmg:
