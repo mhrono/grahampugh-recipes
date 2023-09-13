@@ -200,6 +200,7 @@ class PkgInfoReader(Copier):
                             os.path.join(pkgtmp, toc_entry)
                         )
                         infoarray.extend(self.parsePkgRefs(packageinfoabspath))
+                        break
                     else:
                         self.output(
                             f"An error occurred while extracting {toc_entry}: {err}"
