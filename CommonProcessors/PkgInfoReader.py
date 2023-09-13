@@ -233,6 +233,7 @@ class PkgInfoReader(Copier):
         # change back to original working dir
         os.chdir(cwd)
         shutil.rmtree(pkgtmp)
+        self.output(infoarray)
         return infoarray
 
     def getBomList(self, pkgpath):
