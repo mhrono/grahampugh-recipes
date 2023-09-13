@@ -538,8 +538,8 @@ class PkgInfoReader(Copier):
         cataloginfo["installer_item_size"] = installer_item_size
 
         if "installKBytes" in installerinfo:
-            if installerinfo["installed_size"] > 0:
-                cataloginfo["installed_size"] = installerinfo["installed_size"]
+            if installerinfo["installKBytes"] > 0:
+                cataloginfo["installed_size"] = installerinfo["installKBytes"]
         elif installedsize:
             cataloginfo["installed_size"] = installedsize
 
