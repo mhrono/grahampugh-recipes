@@ -515,7 +515,7 @@ class PkgInfoReader(Copier):
                 highestpkgversion = infoitem["version"]
             if "installKBytes" in infoitem:
                 # note this is in KBytes
-                installedsize += infoitem["installed_size"]
+                installedsize += infoitem["installKBytes"]
 
         if metaversion == "0.0.0.0.0":
             metaversion = highestpkgversion
