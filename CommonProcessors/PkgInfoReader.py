@@ -186,6 +186,7 @@ class PkgInfoReader(Copier):
                             os.path.join(pkgtmp, toc_entry)
                         )
                         infoarray = self.parsePkgRefs(packageinfoabspath)
+                        self.output("infoarray from top-level pkginfo")
                         break
                     else:
                         self.output(
@@ -200,6 +201,7 @@ class PkgInfoReader(Copier):
                             os.path.join(pkgtmp, toc_entry)
                         )
                         infoarray.extend(self.parsePkgRefs(packageinfoabspath))
+                        self.output("infoarray from other pkginfo")
                         break
                     else:
                         self.output(
@@ -219,6 +221,7 @@ class PkgInfoReader(Copier):
                         infoarray = self.parsePkgRefs(
                             distributionabspath, path_to_pkg=pkgpath
                         )
+                        self.output("infoarray from dist file")
                         break
                     else:
                         self.output(
