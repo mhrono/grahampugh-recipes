@@ -186,7 +186,6 @@ class PkgInfoReader(Copier):
                             os.path.join(pkgtmp, toc_entry)
                         )
                         infoarray = self.parsePkgRefs(packageinfoabspath)
-                        self.output("infoarray from top-level pkginfo")
                         break
                     else:
                         self.output(
@@ -201,8 +200,6 @@ class PkgInfoReader(Copier):
                             os.path.join(pkgtmp, toc_entry)
                         )
                         infoarray.extend(self.parsePkgRefs(packageinfoabspath))
-                        self.output("infoarray from other pkginfo")
-                        break
                     else:
                         self.output(
                             f"An error occurred while extracting {toc_entry}: {err}"
@@ -221,7 +218,6 @@ class PkgInfoReader(Copier):
                         infoarray = self.parsePkgRefs(
                             distributionabspath, path_to_pkg=pkgpath
                         )
-                        self.output("infoarray from dist file")
                         break
                     else:
                         self.output(
@@ -236,7 +232,6 @@ class PkgInfoReader(Copier):
         # change back to original working dir
         os.chdir(cwd)
         shutil.rmtree(pkgtmp)
-        self.output(infoarray)
         return infoarray
 
     def getBomList(self, pkgpath):
@@ -520,7 +515,7 @@ class PkgInfoReader(Copier):
                 highestpkgversion = infoitem["version"]
             if "installed_size" in infoitem:
                 # note this is in KBytes
-                installedsize += infoitem["installKBytes"]
+                installedsize += infoitem["installed_size"]
 
         if metaversion == "0.0.0.0.0":
             metaversion = highestpkgversion
